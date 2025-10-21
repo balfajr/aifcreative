@@ -1,18 +1,57 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import Catur from '../assets/checkered.svg';
+import Catur from "../assets/checkered.svg";
 
-const astranauts = Array.from({ length: 5 }, (_, i) => `/src/assets/astranauts/astranauts-${i + 1}.jpg`);
+const astranauts = [
+  new URL("../assets/astranauts/astranauts-1.JPG", import.meta.url).href,
+  new URL("../assets/astranauts/astranauts-2.jpg", import.meta.url).href,
+  new URL("../assets/astranauts/astranauts-3.JPG", import.meta.url).href,
+  new URL("../assets/astranauts/astranauts-4.jpg", import.meta.url).href,
+  new URL("../assets/astranauts/astranauts-5.jpg", import.meta.url).href,
+];
 
-const marathon = Array.from({ length: 6 }, (_, i) => `/src/assets/astra-marathon/marathon-${i + 1}.jpg`);
+const marathon = [
+  new URL("../assets/astra-marathon/marathon-1.jpg", import.meta.url).href,
+  new URL("../assets/astra-marathon/marathon-2.jpg", import.meta.url).href,
+  new URL("../assets/astra-marathon/marathon-3.JPG", import.meta.url).href,
+  new URL("../assets/astra-marathon/marathon-4.jpg", import.meta.url).href,
+  new URL("../assets/astra-marathon/marathon-5.jpg", import.meta.url).href,
+  new URL("../assets/astra-marathon/marathon-6.jpg", import.meta.url).href,
+];
 
-const booth = Array.from({ length: 6 }, (_, i) => `/src/assets/astra-booth/astra-booth-${i + 1}.jpg`);
+const booth = [
+  new URL("../assets/astra-booth/astra-booth-1.jpg", import.meta.url).href,
+  new URL("../assets/astra-booth/astra-booth-2.jpg", import.meta.url).href,
+  new URL("../assets/astra-booth/astra-booth-3.jpg", import.meta.url).href,
+  new URL("../assets/astra-booth/astra-booth-4.jpg", import.meta.url).href,
+  new URL("../assets/astra-booth/astra-booth-5.jpg", import.meta.url).href,
+  new URL("../assets/astra-booth/astra-booth-6.jpg", import.meta.url).href,
+];
 
-const beyondtech = Array.from({ length: 5 }, (_, i) => `/src/assets/beyondtech/beyondtech-${i + 1}.jpg`);
+const beyondtech = [
+  new URL("../assets/beyondtech/beyondtech-1.JPG", import.meta.url).href,
+  new URL("../assets/beyondtech/beyondtech-2.JPG", import.meta.url).href,
+  new URL("../assets/beyondtech/beyondtech-3.JPG", import.meta.url).href,
+  new URL("../assets/beyondtech/beyondtech-4.JPG", import.meta.url).href,
+  new URL("../assets/beyondtech/beyondtech-5.JPG", import.meta.url).href,
+];
 
-const AWM = Array.from({ length: 5 }, (_, i) => `/src/assets/AWM/awm-${i + 1}.jpeg`);
+const AWM = [
+  new URL("../assets/AWM/awm-1.jpeg", import.meta.url).href,
+  new URL("../assets/AWM/awm-2.jpeg", import.meta.url).href,
+  new URL("../assets/AWM/awm-3.jpeg", import.meta.url).href,
+  new URL("../assets/AWM/awm-4.jpeg", import.meta.url).href,
+  new URL("../assets/AWM/awm-5.jpeg", import.meta.url).href,
+];
 
-const SIA = Array.from({ length: 6 }, (_, i) => `/src/assets/SIA/SIA-${i + 1}.jpg`);
+const SIA = [
+  new URL("../assets/SIA/SIA-1.JPG", import.meta.url).href,
+  new URL("../assets/SIA/SIA-2.JPG", import.meta.url).href,
+  new URL("../assets/SIA/SIA-3.JPG", import.meta.url).href,
+  new URL("../assets/SIA/SIA-4.JPG", import.meta.url).href,
+  new URL("../assets/SIA/SIA-5.JPG", import.meta.url).href,
+  new URL("../assets/SIA/SIA-6.JPG", import.meta.url).href,
+];
 
 const colors = [
   "bg-red-500", "bg-pink-500", "bg-orange-300",

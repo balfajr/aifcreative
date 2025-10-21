@@ -10,8 +10,8 @@ import Works from './pages/works'
 import Contact from './pages/contact'
 
 // Vercel: biarkan undefined (root)
-// GitHub Pages: set VITE_BASENAME="/aifcreative"
-const basename = import.meta.env.VITE_BASENAME || undefined
+// GitHub Pages: set BASENAME="/nama-repo"
+const basename = process.env.BASENAME || undefined
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

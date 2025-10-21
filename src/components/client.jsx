@@ -3,14 +3,38 @@ import { Link } from "react-router-dom";
 
 const Client = () => {
   const logos = [
-    "astra.png",
-    "beyondtech.png",
-    "elite-academy.png",
-    "hyundai.png",
-    "kadin.png",
-    "kementrianPerdagangan.png",
-    "kementrianPerkerjaan.png",
-    "telkomsel.png",
+    {
+      src: new URL("../assets/clients/astra.png", import.meta.url).href,
+      alt: "astra",
+    },
+    {
+      src: new URL("../assets/clients/beyondtech.png", import.meta.url).href,
+      alt: "beyondtech",
+    },
+    {
+      src: new URL("../assets/clients/elite-academy.png", import.meta.url).href,
+      alt: "elite-academy",
+    },
+    {
+      src: new URL("../assets/clients/hyundai.png", import.meta.url).href,
+      alt: "hyundai",
+    },
+    {
+      src: new URL("../assets/clients/kadin.png", import.meta.url).href,
+      alt: "kadin",
+    },
+    {
+      src: new URL("../assets/clients/kementrianPerdagangan.png", import.meta.url).href,
+      alt: "kementrianPerdagangan",
+    },
+    {
+      src: new URL("../assets/clients/kementrianPerkerjaan.png", import.meta.url).href,
+      alt: "kementrianPerkerjaan",
+    },
+    {
+      src: new URL("../assets/clients/telkomsel.png", import.meta.url).href,
+      alt: "telkomsel",
+    },
   ];
   const duplicatedLogos = [...logos, ...logos];
 
@@ -48,8 +72,8 @@ const Client = () => {
               viewport={{ once: true }}
             >
               <img
-                src={`${import.meta.env.BASE_URL}clients/${logo}`}
-                alt={logo.replace(".png", "")}
+                src={logo.src}
+                alt={logo.alt}
                 className="w-full h-full object-contain filter drop-shadow-lg"
               />
             </motion.div>

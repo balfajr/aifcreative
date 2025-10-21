@@ -1,6 +1,13 @@
 @import "tailwindcss";
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+html, body {
+  position: relative;
+  min-height: 100%;
+}
+
+#root {
+  min-height: 100%;
+}
 
 @theme {
     --font-space: 'Space Grotesk', sans-serif;

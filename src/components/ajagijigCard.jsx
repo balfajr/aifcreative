@@ -1,7 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useTransform, useSpring, useScroll } from "framer-motion";
 
-const AJ = Array.from({ length: 7 }, (_, i) => `/src/assets/ajagijigfamilia/ajagijig-${i + 1}.jpg`);
+const AJ = [
+  new URL("../assets/ajagijigfamilia/ajagijig-1.jpg", import.meta.url).href,
+  new URL("../assets/ajagijigfamilia/ajagijig-2.jpg", import.meta.url).href,
+  new URL("../assets/ajagijigfamilia/ajagijig-3.jpg", import.meta.url).href,
+  new URL("../assets/ajagijigfamilia/ajagijig-4.jpg", import.meta.url).href,
+  new URL("../assets/ajagijigfamilia/ajagijig-5.jpg", import.meta.url).href,
+  new URL("../assets/ajagijigfamilia/ajagijig-6.jpg", import.meta.url).href,
+  new URL("../assets/ajagijigfamilia/ajagijig-7.jpg", import.meta.url).href,
+];
 
 // bentuk objek kartu dari AJ
 const CARDS = AJ.map((src, i) => ({
