@@ -1,23 +1,21 @@
 import React, { useEffect, useRef, useState } from "react";
-import { motion, useMotionValue, useTransform, useSpring, useScroll } from "framer-motion";
+import { motion, useMotionValue, useScroll, animate, useTransform, useAnimationFrame } from "framer-motion";
 
 const AJ = [
-  new URL("../assets/ajagijigfamilia/ajagijig-1.jpg", import.meta.url).href,
-  new URL("../assets/ajagijigfamilia/ajagijig-2.jpg", import.meta.url).href,
-  new URL("../assets/ajagijigfamilia/ajagijig-3.jpg", import.meta.url).href,
-  new URL("../assets/ajagijigfamilia/ajagijig-4.jpg", import.meta.url).href,
-  new URL("../assets/ajagijigfamilia/ajagijig-5.jpg", import.meta.url).href,
-  new URL("../assets/ajagijigfamilia/ajagijig-6.jpg", import.meta.url).href,
-  new URL("../assets/ajagijigfamilia/ajagijig-7.jpg", import.meta.url).href,
+  new URL("../assets/ajagijigfamilia/ajagijig-1.webp", import.meta.url).href,
+  new URL("../assets/ajagijigfamilia/ajagijig-2.webp", import.meta.url).href,
+  new URL("../assets/ajagijigfamilia/ajagijig-3.webp", import.meta.url).href,
+  new URL("../assets/ajagijigfamilia/ajagijig-4.webp", import.meta.url).href,
+  new URL("../assets/ajagijigfamilia/ajagijig-5.webp", import.meta.url).href,
+  new URL("../assets/ajagijigfamilia/ajagijig-6.webp", import.meta.url).href,
+  new URL("../assets/ajagijigfamilia/ajagijig-7.webp", import.meta.url).href,
 ];
 
-// bentuk objek kartu dari AJ
-const CARDS = AJ.map((src, i) => ({
-  id: i + 1,
-  image: src,
-}));
+// objek kartu
+const CARDS = AJ.map((src, i) => ({ id: i + 1, image: src }));
+const STEP_DEG = 360 / CARDS.length; // sudut antar kartu
 
-function Card({ image, title, rotationDeg, w, h, ring }) {
+function Card({ image, rotationDeg, w, h, ring, onCenter, onHoverStart, onHoverEnd }) {
   return (
     <div
       className="absolute will-change-transform overflow-hidden"
@@ -32,28 +30,29 @@ function Card({ image, title, rotationDeg, w, h, ring }) {
         marginTop: -h / 2,
       }}
     >
-      <motion.div
-        className="relative w-full h-full rounded-2xl overflow-hidden group"
-        whileHover={{ scale: 1.06 }}
-        whileTap={{ scale: 1.03 }}
-        transition={{ type: "spring", stiffness: 260, damping: 22 }}
+      <motion.button
+        type="button"
+        className="relative w-full h-full rounded-2xl overflow-hidden group outline-none focus:ring-2 focus:ring-white/30"
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 1.01 }}
+        transition={{ type: "spring", stiffness: 240, damping: 24 }}
+        onClick={() => onCenter?.(rotationDeg)}
+        onMouseEnter={onHoverStart}
+        onMouseLeave={onHoverEnd}
+        aria-label={`Pusatkan foto`}
+        style={{ cursor: "pointer", willChange: "transform" }}
       >
         <img
           src={image}
-          alt={title}
+          alt="aj"
           draggable="false"
           className="w-full h-full transition-[filter] duration-300 ease-out filter grayscale group-hover:grayscale-0 group-active:grayscale-0"
           style={{ objectFit: "cover", aspectRatio: "4 / 3" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none" />
-        <div className="absolute bottom-3 left-0 right-0 text-center px-3 pointer-events-none">
-          <h3 className="text-white text-sm sm:text-base lg:text-lg font-semibold drop-shadow">
-            {title}
-          </h3>
-        </div>
+        {/* tanpa title; hanya ring & shadow */}
         <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-white/10" />
         <div className="pointer-events-none absolute inset-0 shadow-[0_10px_36px_rgba(0,0,0,0.22),0_6px_18px_rgba(0,0,0,0.18)]" />
-      </motion.div>
+      </motion.button>
     </div>
   );
 }
@@ -86,53 +85,81 @@ export default function AjagijigCard({ className = "" }) {
     return () => { ro.disconnect(); window.removeEventListener("resize", compute); };
   }, []);
 
-  // scroll → rotasi
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start center", "end center"],
-  });
-  const scrollRot = useTransform(scrollYProgress, [0, 1], [0, -240]);
+  // === SATU SUMBER ROTASI + AUTOPLAY ===
+  const totalRot = useMotionValue(0);
+  const playingRef = useRef(true);
 
-  // drag → rotasi
-  const dragRot = useMotionValue(0);
-  const dragStartRot = useRef(0);
-  const DRAG_FACTOR = -0.3;
-  const onDragStart = () => { dragStartRot.current = dragRot.get(); };
-  const onDrag = (_e, info) => { dragRot.set(dragStartRot.current + info.offset.x * DRAG_FACTOR); };
-  const onDragEnd = (_e, info) => { dragRot.set(dragRot.get() + info.velocity.x * DRAG_FACTOR * 0.3); };
+  // Scroll halaman → set orientasi awal (opsional, kecil), hanya jika belum hover/interact
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start center", "end center"] });
+  const scrollMap = useTransform(scrollYProgress, [0, 1], [0, -80]);
+  useEffect(() => {
+    const unsub = scrollMap.on("change", (v) => {
+      if (!playingRef.current) return; // saat pause karena hover/click, jangan ganggu
+      // blend ringan menuju v biar nggak "lompat"
+      const current = totalRot.get();
+      const target = current + (v - current) * 0.1;
+      totalRot.set(target);
+    });
+    return () => unsub();
+  }, [scrollMap, totalRot]);
 
-  // gabungan
-  const rotateY = useSpring(useTransform([scrollRot, dragRot], ([s, d]) => s + d), {
-    stiffness: 70, damping: 18, mass: 0.9,
+  // Autoplay pelan & infinite
+  const SPEED_DEG_PER_S = 8; // pelan (ubah 4–12 sesuai selera)
+  useAnimationFrame((t, delta) => {
+    if (!playingRef.current) return;
+    const inc = -(SPEED_DEG_PER_S * (delta / 1000)); // minus = searah jarum jam
+    let next = totalRot.get() + inc;
+    // Jaga angka tetap kecil agar stabil
+    if (next > 1e6 || next < -1e6) next = next % 360;
+    totalRot.set(next);
   });
+
+  // Hover pause di seluruh stage
+  const handleHoverStart = () => { playingRef.current = false; };
+  const handleHoverEnd = () => { playingRef.current = true; };
+
+  // Helper wrap target terdekat
+  const nearestTurn = (targetDeg, currentDeg) => {
+    const k = Math.round((currentDeg - targetDeg) / 360);
+    return targetDeg + 360 * k;
+  };
+
+  // Klik kartu -> pusatkan & tetap pause selama hover
+  const centerCard = (cardAngleDeg) => {
+    playingRef.current = false; // freeze saat interaksi
+    const current = totalRot.get();
+    const target = nearestTurn(-cardAngleDeg, current);
+    animate(totalRot, target, { type: "spring", stiffness: 90, damping: 20, mass: 1.2 });
+  };
 
   const { w, h, ring } = sz;
 
   return (
     <section ref={sectionRef} className={`relative w-full h-full flex items-center justify-center ${className}`}>
       <div ref={stageRef} className="relative mx-auto w-full h-full max-w-7xl px-4 sm:px-6">
-        <div className="relative w-full h-full flex items-center justify-center" style={{ perspective: "1200px" }}>
+        <div
+          className="relative w-full h-full flex items-center justify-center"
+          style={{ perspective: "1200px" }}
+          onMouseEnter={handleHoverStart}
+          onMouseLeave={handleHoverEnd}
+        >
+          {/* 3D Ring */}
           <motion.div
-            className="relative select-none cursor-grab active:cursor-grabbing"
-            drag="x"
-            dragConstraints={{ left: 0, right: 0 }}
-            dragElastic={0}
-            dragMomentum={false}
-            onDragStart={onDragStart}
-            onDrag={onDrag}
-            onDragEnd={onDragEnd}
-            style={{ rotateY, transformStyle: "preserve-3d", position: "absolute", left: "50%", top: "50%", transform: "translate(-50%, -50%)" }}
+            className="relative will-change-transform"
+            style={{ rotateY: totalRot, transformStyle: "preserve-3d", position: "absolute", left: "50%", top: "50%", transform: "translate(-50%, -50%)" }}
           >
             <div style={{ position: "relative", width: 1, height: 1, transformStyle: "preserve-3d" }}>
               {CARDS.map((c, i) => (
                 <Card
                   key={c.id}
                   image={c.image}
-                  title={c.title}
                   rotationDeg={(i / CARDS.length) * 360}
                   w={w}
                   h={h}
                   ring={ring}
+                  onCenter={centerCard}
+                  onHoverStart={handleHoverStart}
+                  onHoverEnd={handleHoverEnd}
                 />
               ))}
             </div>

@@ -3,19 +3,23 @@ import { motion, AnimatePresence, useInView, useAnimation } from 'framer-motion'
 import { AiFillInstagram } from 'react-icons/ai';
 import NavBar from '../components/navbar.jsx';
 import Footer from '../components/footer';
-import heinzImage from '../assets/profile/heinz.jpg';
-import bejoImage from '../assets/profile/bejo.jpg';
-import axcelImage from '../assets/profile/axcel.jpg';
-import imamImage from '../assets/profile/imam.jpg';
-import yogaImage from '../assets/profile/ybt.jpg';
-import ranggaImage from '../assets/profile/rangga.jpg';
-import raditaImage from '../assets/profile/radita.jpg';
-import andrieImage from '../assets/profile/andrie.jpg';
-import andriantoImage from '../assets/profile/andrianto.jpg';
-import sendraImage from '../assets/profile/sendra.jpg';
+import heinzImage from '../assets/profile/heinz.webp';
+import bejoImage from '../assets/profile/bejo.webp';
+import axcelImage from '../assets/profile/axcel.webp';
+import imamImage from '../assets/profile/imam.webp';
+import yogaImage from '../assets/profile/ybt.webp';
+import ranggaImage from '../assets/profile/rangga.webp';
+import raditaImage from '../assets/profile/radita.webp';
+import andrieImage from '../assets/profile/andrie.webp';
+import andriantoImage from '../assets/profile/andrianto.webp';
+import sendraImage from '../assets/profile/sendra.webp';
 import PageBreak from "../components/infinitepagebreak";
 import AjagijigCard from "../components/ajagijigCard";
-import ajLogo from '../assets/ajagijigfamilia/ajagijiglogo.jpg'; 
+import ajLogo from '../assets/ajagijigfamilia/ajagijiglogo.webp'; 
+
+import { useLocation } from 'react-router-dom';
+
+
 
 
 
@@ -27,16 +31,41 @@ import ajLogo from '../assets/ajagijigfamilia/ajagijiglogo.jpg';
 
 const TeamPage = () => {
   const [selectedMember, setSelectedMember] = useState(null);
+  const [isMdViewport, setIsMdViewport] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return window.innerWidth >= 768;
+  });
+
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const target = document.querySelector(location.hash);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  }, [location]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMdViewport(window.innerWidth >= 768);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const teamMembers = [
     { name: 'Heinz Monterie', position: 'Comissioner', image: heinzImage, instagram: 'https://instagram.com/heinzzem' },
     { name: 'Zulfi Fauzi', position: 'Chief Executive Officer', image: bejoImage, instagram: 'https://instagram.com/zow_zow' },
     { name: 'Andrie Aulia Akbar', position: 'Chief Finance Officer', image: andrieImage, instagram: 'https://instagram.com/andrieboi' },
     { name: 'Imam Luthfi', position: 'Creative Director', image: imamImage, instagram: 'https://instagram.com/mamskii' },
+    { name: 'Axcel Adam Purnomo', position: 'Head Account Manager', image: axcelImage, instagram: 'https://instagram.com/aaxcel' },
     { name: 'Andrianto', position: 'Production Director', image: andriantoImage, instagram: 'https://instagram.com/kingdobol' },
     { name: 'Yoga Boytama', position: 'Operation Manager', image: yogaImage, instagram: 'https://instagram.com/ygbytm' },
     { name: 'Rangga Tampubolon', position: 'Operation Supervisor', image: ranggaImage, instagram: 'https://instagram.com/ranggatampubolon' },
-    { name: 'Axcel Adam Purnomo', position: 'Head Account Manager', image: axcelImage, instagram: 'https://instagram.com/aaxcel' },
     { name: 'Radita Bahri', position: 'Creative Manager', image: raditaImage, instagram: 'https://instagram.com/raditabahri' },
     { name: 'Sendra Ahmad', position: 'Creative Designer', image: sendraImage, instagram: 'https://instagram.com/sendraahmad' },
   ];
@@ -97,7 +126,7 @@ function Counter({ from = 0, to = 1000, duration = 1.6 }) {
     visible: {
       y: 0,
       opacity: 1,
-      scale: 1,
+      scale: isMdViewport ? 1.5 : 1,
       transition: {
         duration: 0.3,
         ease: "easeOut",
@@ -155,12 +184,21 @@ function Counter({ from = 0, to = 1000, duration = 1.6 }) {
               transition={{ duration: 0.3, ease: "easeInOut" }}
             >
             
-                <div
-                  style={{ backgroundImage: `url(${member.image})` }}
-                  className="w-full h-64 bg-cover bg-center"
-                  aria-label={member.name}
-                >
-                </div>
+                <div className="w-full overflow-hidden">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    loading="lazy"
+                    decoding="async"
+                    className="
+                      block w-full h-auto
+                      aspect-square object-contain
+                      sm:aspect-[4/5] sm:object-cover
+                      lg:aspect-[3/4]
+                      bg-black/5
+                    "
+                  />
+              </div>
                 <div className="p-4 border-t border-gray-200">
                   <h3 className="font-medium text-gray-900">{member.name}</h3>
                   <p className="text-sm text-gray-500">{member.position}</p>
@@ -188,7 +226,9 @@ function Counter({ from = 0, to = 1000, duration = 1.6 }) {
       <PageBreak />
 
       {/* === Meet Our Man Power Team === */}
-<section className="relative font-space overflow-hidden bg-black mx-auto  text-cream px-4 md:px-6 py-12 md:py-16">
+<section
+id="manpower-team"
+className="relative font-space overflow-hidden bg-black mx-auto  text-cream px-4 md:px-6 py-12 md:py-16">
   <div className="max-w-5xl mx-auto">
 
   <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight  text-cream">
@@ -229,7 +269,7 @@ function Counter({ from = 0, to = 1000, duration = 1.6 }) {
         <h3 className="text-cream font-semibold leading-tight text-base sm:text-lg lg:text-xl">
           AJAGIJIG FAMILIA
         </h3>
-        <span className="hidden sm:inline text-[11px] px-2 py-0.5 rounded-full bg-white/10 text-white/75">
+        <span className="hidden sm:inline text-[11px] px-2 py-0.5 rounded-full bg-white/10 text-cream/75">
           Manpower Partner
         </span>
       </div>

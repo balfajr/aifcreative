@@ -68,21 +68,21 @@ const Navbar = () => {
 
       {/* --- Panel Menu Geser (tetap sama) --- */}
       <div
-        className={`fixed top-0 left-0 w-full h-screen bg-black text-white/70 flex flex-col items-center justify-center transition-transform duration-300 ease-in-out z-40
+        className={`fixed top-0 left-0 w-full h-screen bg-black text-cream/70 flex flex-col items-center justify-center transition-transform duration-300 ease-in-out z-40
           ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'}
         `}
       >
         <div className="flex flex-col text-center uppercase space-y-8">
-          <Link to="/" className="text-3xl font-semibold hover:text-white transition-colors" onClick={toggleMenu}>
+          <Link to="/" className="text-3xl font-semibold hover:text-cream transition-colors" onClick={toggleMenu}>
             Home
           </Link>
-          <Link to="/works" className="text-3xl font-semibold hover:text-white transition-colors" onClick={toggleMenu}>
+          <Link to="/works" className="text-3xl font-semibold hover:text-cream transition-colors" onClick={toggleMenu}>
             Works
           </Link>
-          <Link to="/team" className="text-3xl font-semibold hover:text-white transition-colors" onClick={toggleMenu}>
+          <Link to="/team" className="text-3xl font-semibold hover:text-cream transition-colors" onClick={toggleMenu}>
             Meet Our Team
           </Link>
-          <Link to="/contact" className="text-3xl font-semibold hover:text-white transition-colors" onClick={toggleMenu}>
+          <Link to="/contact" className="text-3xl font-semibold hover:text-cream transition-colors" onClick={toggleMenu}>
             Contact
           </Link>
           <div className="w-full h-px bg-gray-700 mx-auto"></div> 

@@ -9,7 +9,7 @@ const InfiniteCheckerboard = () => {
           {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19].map((index) => (
             <div 
               key={index} 
-              className={`w-8 h-8 ${((index + offset) % 2 === 0) ? 'bg-black' : 'bg-white'}`}
+              className={`w-8 h-8 ${((index + offset) % 2 === 0) ? 'bg-black' : 'bg-cream'}`}
             />
           ))}
         </div>

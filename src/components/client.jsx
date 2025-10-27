@@ -4,35 +4,35 @@ import { Link } from "react-router-dom";
 const Client = () => {
   const logos = [
     {
-      src: new URL("../assets/clients/astra.png", import.meta.url).href,
+      src: new URL("../assets/clients/astra.webp", import.meta.url).href,
       alt: "astra",
     },
     {
-      src: new URL("../assets/clients/beyondtech.png", import.meta.url).href,
+      src: new URL("../assets/clients/beyondtech.webp", import.meta.url).href,
       alt: "beyondtech",
     },
     {
-      src: new URL("../assets/clients/elite-academy.png", import.meta.url).href,
+      src: new URL("../assets/clients/elite-academy.webp", import.meta.url).href,
       alt: "elite-academy",
     },
     {
-      src: new URL("../assets/clients/hyundai.png", import.meta.url).href,
+      src: new URL("../assets/clients/hyundai.webp", import.meta.url).href,
       alt: "hyundai",
     },
     {
-      src: new URL("../assets/clients/kadin.png", import.meta.url).href,
+      src: new URL("../assets/clients/kadin.webp", import.meta.url).href,
       alt: "kadin",
     },
     {
-      src: new URL("../assets/clients/kementrianPerdagangan.png", import.meta.url).href,
+      src: new URL("../assets/clients/kementrianPerdagangan.webp", import.meta.url).href,
       alt: "kementrianPerdagangan",
     },
     {
-      src: new URL("../assets/clients/kementrianPerkerjaan.png", import.meta.url).href,
+      src: new URL("../assets/clients/kementrianPerkerjaan.webp", import.meta.url).href,
       alt: "kementrianPerkerjaan",
     },
     {
-      src: new URL("../assets/clients/telkomsel.png", import.meta.url).href,
+      src: new URL("../assets/clients/telkomsel.webp", import.meta.url).href,
       alt: "telkomsel",
     },
   ];
@@ -42,7 +42,7 @@ const Client = () => {
     <div className="bg-black h-full p-4 font-space pb-20">
       {/* Title */}
       <motion.div
-        className="text-center mt-8 text-xl md:text-2xl text-white"
+        className="text-center mt-8 text-xl md:text-2xl text-cream"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.5, delay: 0.1 }}
@@ -82,14 +82,14 @@ const Client = () => {
       </div>
 
       <div className="font-space mx-auto px-4 flex flex-col gap-3">
-        <p className="text-center text-white text-2xl mt-8 md:w-2/3 md:self-center">
+        <p className="text-center text-cream text-2xl mt-8 md:w-2/3 md:self-center">
           Their satisfaction isn't just a result—it's a reflection of our team's
           expertise, passion, and commitment to groundbreaking innovation
         </p>
 
         <Link to="/team" className="self-center mt-10">
           <motion.button
-            className="relative group md:w-fit w-fit px-2 py-4 text-sm md:text-lg font-semibold text-white bg-pink rounded-lg transition-all shadow-[4px_4px_0px_#011]"
+            className="relative group md:w-fit w-fit px-2 py-4 text-sm md:text-lg font-semibold text-cream bg-pink rounded-lg transition-all shadow-[4px_4px_0px_#011]"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

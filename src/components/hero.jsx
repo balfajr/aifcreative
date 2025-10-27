@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useAnimation, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { FaStarOfLife } from "react-icons/fa6";
 import PageBreak from "./infinitepagebreak";
 
 const Hero = () => {
@@ -56,7 +55,6 @@ const Hero = () => {
           variants={wordAnimation}
           transition={{ delayChildren: 1, staggerChildren: 0.05 }}
         >
-          <FaStarOfLife className="inline-block mb-2 mr-4 text-3xl md:text-5xl align-middle" />
           {text.split(" ").map((word, index) => (
             <motion.span 
               key={index} 

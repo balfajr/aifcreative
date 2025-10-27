@@ -10,8 +10,7 @@ const UnderlinedLabel = ({ label, value }) => {
   const generateLink = () => {
     switch (label) {
       case 'ADDRESS':
-        // Creates a Google Maps search URL.
-        return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(value)}`;
+        return `https://maps.app.goo.gl/cc1uG6VoEyct8YPs5`;
       case 'PHONE':
         // Creates a WhatsApp "click to chat" link.
         const phoneNumber = value.replace(/\D/g, '');
@@ -34,18 +33,18 @@ const UnderlinedLabel = ({ label, value }) => {
       whileHover={{ scale: 1.01 }}
     >
       <div className="flex justify-between items-baseline py-2 gap-2">
-        <span className="text-white/80 font-medium">{label}</span>
+        <span className="text-cream/80 font-medium">{label}</span>
         {href ? (
           <a 
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white/60 font-medium hover:text-white transition-colors cursor-pointer"
+            className="text-cream/60 font-medium hover:text-cream transition-colors cursor-pointer"
           >
             {value}
           </a>
         ) : (
-          <span className="text-white/60 font-medium">{value}</span>
+          <span className="text-cream/60 font-medium">{value}</span>
         )}
       </div>
       <motion.div 
@@ -75,20 +74,6 @@ const Footer = () => {
   return (
     // The main container with your original classes
     <div className='h-full bg-black font-space relative overflow-hidden border-t border-white/80'>
-      {/* This section is restored from your original code */}
-      {/* <div className="max-w-7xl mx-auto flex flex-row h-full justify-between items-end py-7">
-        <motion.div
-          className="text-2xl md:text-5xl font-bold text-white text-start p-4 md:w-3/5 mb-8 md:mb-0"
-          initial={{ opacity: 0, y: 50, scale: 0.9 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-        >
-        <span className="font-thin">Your Ideas Deserve the Spotlight—</span>Let’s Make Them Shine
-        </motion.div>
-        <FiArrowDownLeft className="text-white text-9xl self-center md:self-end" />
-      </div> 
-      */}
-
       {/* The main content area with your original layout */}
       <div className="border-t-2 border-white/60">
         <div className="max-w-7xl mx-auto flex flex-row justify-between items-center py-7 p-4">
@@ -97,7 +82,7 @@ const Footer = () => {
               key={index}
               href={link.href || "#"}
               onClick={link.action || undefined}
-              className="relative text-sm md:text-xl text-cream/70 hover:text-white text-center group cursor-pointer"
+              className="relative text-sm md:text-xl text-cream/70 hover:text-cream text-center group cursor-pointer"
               whileHover={{ scale: 1.1, y: -2 }}
               whileTap={{ scale: 0.9 }}
             >
@@ -115,18 +100,40 @@ const Footer = () => {
         </div>
 
         <div className='max-w-7xl mt-10 mx-auto px-8 flex flex-col md:flex-row md:gap-14 justify-center items-center'>
-          <span className='text-cream text-5xl md:text-7xl font-extrabold font-space text-center leading-12 md:leading-20'>GET IN <br />TOUCH</span>
+          <div className='flex flex-col items-center md:items-start gap-6'>
+            <span className='text-cream text-5xl md:text-7xl font-extrabold font-space text-center md:text-left leading-12 md:leading-20'>
+              GET IN <br />TOUCH
+            </span>
+          </div>
           <div className='flex-col font-space text-right grow w-full'>
             {/* The functional UnderlinedLabel is used here */}
             <UnderlinedLabel label="ADDRESS" value="Jalan Kemang Timur Raya No 29 Bangka Mampang Prapatan, Kec. Cilandak, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12730" />
             <UnderlinedLabel label="PHONE" value="+62 813-1156-5794" />
-            <UnderlinedLabel label="MAIL" value="aifcreative@gmail.com" />
+            <UnderlinedLabel label="MAIL" value="eventmanagement@aifcreative.com" />
           </div>
         </div>
         <p className='text-creamm/50 mx-auto text-xs text-center w-2/3 my-8'>@TRADEMARK AIF CREATIVE
           UNLESS EXPLICITLY STATED OTHERWISE, ALL RIGHTS INCLUDING THOSE IN COPYRIGHT IN THE CONTENT OF THIS 
           DOCUMENTS, LOGOS, TRADEMARKS, DESIGNS, ARE OWNED BY OR CONTROLLED FOR THESE PURPOSED BY AIF CREATIVE
         </p>
+        <div className="flex justify-center pb-12">
+          <motion.a
+            href="/contact"
+            className="group relative inline-flex items-center justify-center rounded-full border border-white/30 px-8 py-3 text-base font-semibold tracking-wide text-cream text-center"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.97 }}
+          >
+            <span className="relative inline-block">
+              <span className="transition-opacity duration-150 group-hover:opacity-0">
+                Ready to collaborate?
+              </span>
+              <span className="absolute inset-0 flex items-center justify-center text-cream transition-opacity duration-150 opacity-0 group-hover:opacity-100">
+                Let's go!
+              </span>
+              <span className="absolute left-0 -bottom-1 w-full h-[1px] bg-cream/80 origin-left transition-transform duration-300 group-hover:scale-x-0"></span>
+            </span>
+          </motion.a>
+        </div>
       </div>
 
       {/* Infinite Text Slider Section with your original design */}

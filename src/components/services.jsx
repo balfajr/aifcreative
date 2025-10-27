@@ -1,6 +1,8 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { MdArrowForward } from "react-icons/md";
+import { Link } from "react-router-dom";
+
 
 const Services = () => {
     const [activeService, setActiveService] = useState(null);
@@ -37,6 +39,15 @@ const Services = () => {
             title: 'Talent & Entertainment',
             description: "Elevate the energy of your event with captivating talent and entertainment. We curate a diverse roster of performers, from engaging masters of ceremony and mesmerizing musicians to dynamic dancers and electrifying DJs. Whether you're looking for a sophisticated ambiance or a high-energy celebration, we'll find the perfect talent to create an unforgettable experience for your guests.",
         },
+        {
+            id: '07',
+            title: 'Man Power Event',
+            description: "Behind every successful event, there’s a team that builds, moves, and makes it happen. AjagIjig Familia is the movement behind the stage — the people who turn preparation into performance, and effort into experience.",
+            cta: {
+            href: '/team#manpower-team',
+            label: 'Meet Ajagijig Familia',
+  },
+        },
     ];
 
     const arrowVariants = {
@@ -61,7 +72,7 @@ const Services = () => {
     };
 
     return (
-        <div className="min-h-screen bg-black px-4 py-4 font-space text-white">
+        <div className="min-h-screen bg-black px-4 py-4 font-space text-cream">
             <motion.div 
                 className="max-w-7xl mx-auto flex md:flex-row flex-col items-center justify-between mb-16"
                 initial="hidden" 
@@ -72,7 +83,7 @@ const Services = () => {
                 <h1 className="text-2xl md:text-5xl font-thin text-start self-start md:self-start md:w-fit mb-8 md:mb-0">
                     (<span className="font-bold">Our</span> Services)
                 </h1>
-                <p className="text-justify text-white/50 md:max-w-[600px]">
+                <p className="text-justify text-cream/50 md:max-w-[600px]">
                     We're not just event planners — we're architects of experiences. From concept to curtain call, we orchestrate every element of your event with precision and passion.
                 </p>
             </motion.div>
@@ -93,7 +104,7 @@ const Services = () => {
                         >
                             <div className="flex justify-between items-start">
                                 <div className="flex items-baseline gap-5">
-                                    <span className="text-white/50 text-sm">{service.id}</span>
+                                    <span className="text-cream/50 text-sm">{service.id}</span>
                                     <h3 className="text-2xl font-medium">{service.title}</h3>
                                 </div>
                                 
@@ -102,14 +113,14 @@ const Services = () => {
                                     animate={activeService === service.id ? "expanded" : "collapsed"}
                                     transition={{ duration: 0.2 }}
                                 >
-                                    <MdArrowForward  className="w-6 h-6 mt-1 flex-shrink-0" />
+                                    <MdArrowForward  className="w-6 h-6 mt-1" />
                                 </motion.div>
                             </div>
                             
                             <AnimatePresence>
                                 {activeService === service.id && (
                                     <motion.p 
-                                        className="text-white/80 text-sm leading-relaxed mt-4"
+                                        className="text-cream/80 text-sm leading-relaxed mt-4"
                                         variants={descVariants}
                                         initial="collapsed"
                                         animate="expanded"
@@ -117,6 +128,15 @@ const Services = () => {
                                         transition={{ duration: 0.3 }}
                                     >
                                         {service.description}
+                                        {service.cta && (
+                                        <Link
+                                            to={service.cta.href}
+                                            className="mt-4 md:ml-2 inline-flex items-center gap-2 text-pink-500 hover:text-pink-400 underline"
+                                        >
+                                            {service.cta.label}
+                                            <MdArrowForward className="w-4 h-4" />
+                                        </Link>
+                                        )}
                                     </motion.p>
                                 )}
                             </AnimatePresence>

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import Logo from "../assets/aifmulticolor.png";
+import Logo from "../assets/aifmulticolor.webp";
 
 const Preloader = ({ setLoading }) => {
   return (

@@ -12,7 +12,7 @@ const Content = () => {
         transition={{ duration: 1.5, ease: "easeOut" }}
         viewport={{ once: true }}
       >
-        <span className="text-white/70 font-extralight italic text-sm">We Are</span>&nbsp;
+        <span className="text-cream/70 font-extralight italic text-sm">We Are</span>&nbsp;
         <span>
           Master of Event Planning — Here's <br />
           <span className="hidden md:inline ml-4">&nbsp;&nbsp;</span> How We Do It
@@ -33,7 +33,7 @@ const Content = () => {
           {/* === Kolom Kiri (untuk semua teks) === */}
           <div className="flex flex-col md:w-5/6 gap-6">
             <motion.p
-              className="text-white text-4xl md:text-5xl leading-tight font-medium"
+              className="text-cream text-4xl md:text-5xl leading-tight font-medium"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.5, delay: 0.5 }}
@@ -60,13 +60,7 @@ const Content = () => {
               transition={{ duration: 1.5, delay: 1.2 }}
               viewport={{ once: true }}
             >
-              At AIF, we believe that true innovation is a dynamic journey—one
-              that challenges conventions, embraces collaboration, and adapts to
-              ever-evolving possibilities. Through our{" "}
-              <span className="font-bold">"Break It, Make It, Flux It"</span>{" "}
-              philosophy, we empower individuals and organizations to
-              deconstruct limits, build meaningful solutions, and remain fluid
-              in the face of change.
+             At AIF, we believe innovation is a living journey — a constant flow of breaking, making, and becoming. Through our creative code, “Break It, Make It, Flux It,” we craft experiences that resonate beyond moments — because if it doesn’t make you feel something, it’s not AIF.
             </motion.p>
           </div>
 
