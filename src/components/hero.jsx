@@ -48,12 +48,12 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto p-10 h-full flex items-end">
         <motion.div
-          className="text-4xl md:text-5xl tracking-tight leading-tight md:leading-tigher font-semibold text-cream max-w-5xl"
+          className="text-2xl md:text-5xl tracking-tighter leading-tighter md:leading-tigher font-semibold text-cream max-w-5xl"
           ref={ref}
           initial="hidden"
           animate={ctrls}
           variants={wordAnimation}
-          transition={{ delayChildren: 1, staggerChildren: 0.05 }}
+          transition={{ delayChildren: 0.5, staggerChildren: 0.05 }}
         >
           {text.split(" ").map((word, index) => (
             <motion.span 
