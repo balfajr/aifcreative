@@ -4,7 +4,7 @@ import { useInView } from "react-intersection-observer";
 import PageBreak from "./infinitepagebreak";
 
 const Hero = () => {
-  const text = "In the World of Endless Possibilities, We Help You Discover the Extraordinary.";
+  const text = "AIF Creative is a playground for bold thinkers and boundary-benders. We don’t chase trends — we create motion. From concept to chaos, we craft experiences that move, shift, and stick.";
 
   const ctrls = useAnimation();
   const { ref, inView } = useInView({
@@ -48,7 +48,7 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto p-10 h-full flex items-end">
         <motion.div
-          className="text-4xl md:text-7xl tracking-normal leading-tight md:leading-tight font-semibold text-cream max-w-4xl"
+          className="text-4xl md:text-5xl tracking-tight leading-tight md:leading-tigher font-semibold text-cream max-w-5xl"
           ref={ref}
           initial="hidden"
           animate={ctrls}

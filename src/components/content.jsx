@@ -6,16 +6,19 @@ const Content = () => {
     <div className="bg-black h-full p-4 font-space px-4 md:px-8">
       {/* Main Section */}
       <motion.div 
-        className="max-w-7xl mx-auto font-space my-10 text-4xl mb-4 md:text-6xl text-cream xl text-left font-extrabold tracking-wide"
+        className="max-w-7xl mx-auto font-space my-10 text-3xl mb-4 md:text-4xl text-cream xl text-left font-extrabold tracking-wide"
         initial={{ opacity: 0, x: -50 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
         viewport={{ once: true }}
       >
-        <span className="text-cream/70 font-extralight italic text-sm">We Are</span>&nbsp;
+        <span className="text-cream/70 font-extralight italic text-lg">We're</span>&nbsp;
         <span>
-          Master of Event Planning — Here's <br />
-          <span className="hidden md:inline ml-4">&nbsp;&nbsp;</span> How We Do It
+          Not Here to Fit In.
+We’re Here to Break it, Make it, and Flux it —
+Crafting Chaos Into Visual Poetry.
+<br />
+          <span className="hidden md:inline"></span> Welcome to AIF Creative.
         </span>
       </motion.div>
 
@@ -39,7 +42,7 @@ const Content = () => {
               transition={{ duration: 1.5, delay: 0.5 }}
               viewport={{ once: true }}
             >
-              We provide the best services with <br />
+              WHAT WE DO — “The Playground” <br />
               <motion.span
                 className="text-yellow font-bold"
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -47,9 +50,7 @@ const Content = () => {
                 transition={{ duration: 0.5, delay: 1.2 }}
                 viewport={{ once: true }}
               >
-                out of the box
               </motion.span>{" "}
-              idea
             </motion.p>
             
             {/* Paragraf Deskripsi */}
@@ -60,7 +61,9 @@ const Content = () => {
               transition={{ duration: 1.5, delay: 1.2 }}
               viewport={{ once: true }}
             >
-             At AIF, we believe innovation is a living journey — a constant flow of breaking, making, and becoming. Through our creative code, “Break It, Make It, Flux It,” we craft experiences that resonate beyond moments — because if it doesn’t make you feel something, it’s not AIF.
+             We design experiences that move — through space, sound, and emotion.
+From live activations to digital storytelling, every piece we craft carries the same DNA: motion, meaning, and disruption.
+
             </motion.p>
           </div>
 
