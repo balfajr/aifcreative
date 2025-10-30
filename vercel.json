@@ -13,20 +13,19 @@
     "PUBLIC_URL": "",
     "BASENAME": ""
   },
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
-    {
+
   "redirects": [
     {
       "source": "/rab2025",
       "destination": "https://docs.google.com/spreadsheets/d/1uhr4TSgSZXGfU7MjAW2r5L9os-ZAS6qm9/edit?gid=1417640007#gid=1417640007",
       "permanent": true
     }
-  ]
-}
+  ],
 
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
   ]
 }
