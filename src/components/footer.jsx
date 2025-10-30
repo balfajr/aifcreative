@@ -108,7 +108,7 @@ const Footer = () => {
           <div className='flex-col font-space text-right grow w-full'>
             {/* The functional UnderlinedLabel is used here */}
             <UnderlinedLabel label="ADDRESS" value="Jalan Kemang Timur Raya No 29 Bangka Mampang Prapatan, Kec. Cilandak, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12730" />
-            <UnderlinedLabel label="PHONE" value="+62 813-1156-5794" />
+            <UnderlinedLabel label="PHONE" value="+31 6 42217797" />
             <UnderlinedLabel label="MAIL" value="eventmanagement@aifcreative.com" />
           </div>
         </div>

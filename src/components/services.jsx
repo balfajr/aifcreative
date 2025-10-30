@@ -132,7 +132,7 @@ const Services = () => {
                                         <Link
                                             to={service.cta.href}
                                             className="mt-4 md:ml-2 inline-flex items-center gap-2 text-pink-500 hover:text-pink-400 underline"
-                                        >
+                                        > 
                                             {service.cta.label}
                                             <MdArrowForward className="w-4 h-4" />
                                         </Link>

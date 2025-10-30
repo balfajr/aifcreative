@@ -6,18 +6,18 @@ const Content = () => {
     <div className="bg-black h-full p-4 font-space px-4 md:px-8">
       {/* Main Section */}
       <motion.div 
-        className="max-w-7xl mx-auto font-space my-10 text-3xl mb-4 md:text-4xl text-cream xl text-left font-extrabold tracking-wide"
+        className="max-w-7xl mx-auto font-space my-10 text-2xl mb-4 md:text-4xl text-cream xl text-left font-extrabold tracking-tighter leading-tighter md:leading-tigher"
         initial={{ opacity: 0, x: -50 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
         viewport={{ once: true }}
       >
-        <span className="text-cream/70 font-extralight italic text-lg">We're</span>&nbsp;
+        <span className="text-cream/70 font-extralight italic md:text-sm text-lg">We're</span>&nbsp;&nbsp;
         <span>
           Not Here to Fit In.
-We’re Here to Break it, Make it, and Flux it —
-Crafting Chaos Into Visual Poetry.
-<br />
+          We’re Here to Break it, Make it, and Flux it —
+          Crafting Chaos Into Visual Poetry.
+          <br />
           <span className="hidden md:inline"></span> Welcome to AIF Creative.
         </span>
       </motion.div>
@@ -30,10 +30,8 @@ Crafting Chaos Into Visual Poetry.
         transition={{ duration: 1.5, ease: "easeOut" }}
         viewport={{ once: true }}
       >
-        {/* Kontainer FLEX utama: diubah menjadi flex-row di layar besar */}
         <div className="flex flex-col md:flex-row gap-8 md:gap-4">
 
-          {/* === Kolom Kiri (untuk semua teks) === */}
           <div className="flex flex-col md:w-5/6 gap-6">
             <motion.p
               className="text-cream text-4xl md:text-5xl leading-tight font-medium"

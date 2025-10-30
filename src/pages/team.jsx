@@ -63,11 +63,11 @@ const TeamPage = () => {
     { name: 'Andrie Aulia Akbar', position: 'Chief Finance Officer', image: andrieImage, instagram: 'https://instagram.com/andrieboi' },
     { name: 'Imam Luthfi', position: 'Creative Director', image: imamImage, instagram: 'https://instagram.com/mamskii' },
     { name: 'Axcel Adam Purnomo', position: 'Head Account Manager', image: axcelImage, instagram: 'https://instagram.com/aaxcel' },
+    { name: 'Radita Bahri', position: 'Creative Manager', image: raditaImage, instagram: 'https://instagram.com/raditabahri' },
+    { name: 'Sendra Ahmad', position: 'Creative Designer', image: sendraImage, instagram: 'https://instagram.com/sendraahmad' },
     { name: 'Andrianto', position: 'Production Director', image: andriantoImage, instagram: 'https://instagram.com/kingdobol' },
     { name: 'Yoga Boytama', position: 'Operation Manager', image: yogaImage, instagram: 'https://instagram.com/ygbytm' },
     { name: 'Rangga Tampubolon', position: 'Operation Supervisor', image: ranggaImage, instagram: 'https://instagram.com/ranggatampubolon' },
-    { name: 'Radita Bahri', position: 'Creative Manager', image: raditaImage, instagram: 'https://instagram.com/raditabahri' },
-    { name: 'Sendra Ahmad', position: 'Creative Designer', image: sendraImage, instagram: 'https://instagram.com/sendraahmad' },
   ];
   
   // Animation variants for the grid container
@@ -269,7 +269,7 @@ className="relative font-space overflow-hidden bg-black mx-auto  text-cream px-4
         <h3 className="text-cream font-semibold leading-tight text-base sm:text-lg lg:text-xl">
           AJAGIJIG FAMILIA
         </h3>
-        <span className="hidden sm:inline text-[11px] px-2 py-0.5 rounded-full bg-white/10 text-cream/75">
+        <span className="hidden sm:inline text-[11px] px-2 py-0.5 rounded-full bg-white/10 text-white/75">
           Manpower Partner
         </span>
       </div>
