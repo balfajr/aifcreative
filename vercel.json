@@ -11,7 +11,6 @@
     "PUBLIC_URL": "",
     "BASENAME": ""
   },
-
   "redirects": [
     {
       "source": "/rab2025",
@@ -23,8 +22,6 @@
       "destination": "https://docs.google.com/spreadsheets/d/1uhr4TSgSZXGfU7MjAW2r5L9osZAS6qm9/edit?gid=1417640007#gid=1417640007",
       "permanent": true
     },
-
-    /* ✅ New redirect */
     {
       "source": "/testAED",
       "destination": "https://docs.google.com/forms/d/1Dh-ZjC3XAwTMbVJkUejFONjXn298s9fvU5UMLI1-j4s/edit",
@@ -36,7 +33,6 @@
       "permanent": true
     }
   ],
-
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
