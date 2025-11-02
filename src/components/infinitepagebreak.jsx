@@ -1,31 +1,40 @@
 import { motion } from 'framer-motion';
 
 const InfiniteCheckerboard = () => {
-  // Helper component for a single row
-  const CheckerRow = ({ offset }) => (
-    <div className="flex h-8">
-      {[0, 1, 2, 3, 4, 5, 6].map((set) => (
-        <div key={set} className="flex">
-          {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19].map((index) => (
-            <div 
-              key={index} 
-              className={`w-8 h-8 ${((index + offset) % 2 === 0) ? 'bg-black' : 'bg-cream'}`}
-            />
-          ))}
-        </div>
-      ))}
-    </div>
-  );
-
   return (
-    <div className="w-full h-16 overflow-hidden relative">
+    <div className="w-full h-4 overflow-hidden relative bg-black">
       <motion.div 
-        className="absolute top-0 flex flex-col"
-        animate={{ x: [0, -320] }} // Adjust the x value to match the width of the checkerboard
-        transition={{ repeat: Infinity, duration: 10, ease: "linear" }} // Adjust duration for smoothness
+        className="absolute top-0 left-0 flex"
+        animate={{ x: [0, -24] }} 
+        transition={{ 
+          repeat: Infinity, 
+          duration: 1, 
+          ease: "linear" 
+        }}
       >
-        <CheckerRow offset={0} />
-        <CheckerRow offset={1} />
+        {/* Duplicate pattern untuk seamless loop */}
+        {[0, 1].map((duplicate) => (
+          <div key={duplicate}>
+            {/* Row 1: hitam cream hitam cream... */}
+            <div className="flex">
+              {[...Array(200)].map((_, i) => (
+                <div 
+                  key={`r1-${i}`} 
+                  className={`w-3 h-2 ${i % 2 === 0 ? 'bg-black' : 'bg-amber-50'}`}
+                />
+              ))}
+            </div>
+            {/* Row 2: cream hitam cream hitam... */}
+            <div className="flex">
+              {[...Array(200)].map((_, i) => (
+                <div 
+                  key={`r2-${i}`} 
+                  className={`w-3 h-2 ${i % 2 === 0 ? 'bg-amber-50' : 'bg-black'}`}
+                />
+              ))}
+            </div>
+          </div>
+        ))}
       </motion.div>
     </div>
   );
