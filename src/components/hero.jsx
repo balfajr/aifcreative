@@ -31,7 +31,7 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 mx-auto flex min-h-dvh w-full max-w-7xl flex-col justify-end gap-10 px-6 pb-[clamp(3rem,6vw,6rem)] pt-[clamp(5rem,12vw,8rem)] md:px-10">
+      <div className="relative z-10 mx-auto flex min-h-dvh w-full max-w-7xl items-end px-6 pb-[clamp(3rem,6vw,6rem)] pt-[clamp(4rem,10vw,7rem)] md:px-10">
         <motion.p
           ref={ref}
           initial={{ opacity: 0, y: 32 }}
@@ -43,7 +43,7 @@ const Hero = () => {
               transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
             },
           }}
-          className="hero-prose text-balance text-cream text-[clamp(1.625rem,4vw,3.5rem)] font-semibold leading-[1.15] tracking-normal"
+          className="hero-prose max-w-5xl text-balance text-cream text-[clamp(1.75rem,4vw,3.5rem)] font-semibold leading-[1.15] tracking-normal"
         >
           {heroCopy}
         </motion.p>
