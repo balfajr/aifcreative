@@ -3,7 +3,7 @@ import ScrollToTop from './components/ScrollToTop';
 
 const App = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-[100dvh] min-h-dvh">
       <ScrollToTop />
       <main className=""> {/* Padding untuk navbar fixed */}
         <Outlet /> {/* Tempat halaman aktif dirender */}

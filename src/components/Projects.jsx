@@ -24,7 +24,7 @@ const Projects = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black font-space p-4 relative">
+    <div className="min-h-[100dvh] min-h-dvh bg-black font-space p-4 relative px-safe pb-safe">
       <img src={Catur} alt="Catur" className="w-10 absolute left-5 top-5" />
       <div className="max-w-7xl mx-auto">
         <motion.p 
@@ -48,11 +48,11 @@ const Projects = () => {
             className="group relative cursor-pointer overflow-hidden rounded-xl"
             onClick={() => { setSelectedProject(project); setCurrentImage(0); }}
           >
-            <div className={`absolute inset-0 ${colors[index % colors.length]} mix-blend-multiply hover:mix-blend-soft-light transition-all`} />
+            <div className={`pointer-events-none absolute inset-0 -z-10 ${colors[index % colors.length]} mix-blend-multiply hover:mix-blend-soft-light transition-all`} />
             <img
               src={project.images[0]}
               alt={project.title}
-              className="w-full h-64 object-cover hover:brightness-100 transition-all" 
+              className="relative z-10 w-full h-64 object-cover hover:brightness-100 transition-all"
               loading="lazy"
             />
             <div className="absolute bottom-4 left-4 text-cream">

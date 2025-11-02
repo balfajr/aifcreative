@@ -68,9 +68,13 @@ html, body {
 }
 
 @layer utilities {
-  .safe-px {
+  .px-safe {
     padding-left: max(1.5rem, env(safe-area-inset-left, 0px));
     padding-right: max(1.5rem, env(safe-area-inset-right, 0px));
+  }
+
+  .pb-safe {
+    padding-bottom: max(1.5rem, env(safe-area-inset-bottom, 0px));
   }
 
   .min-h-dvh {

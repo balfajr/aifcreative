@@ -4,7 +4,7 @@ import Logo from "../assets/aifmulticolor.webp";
 const Preloader = ({ setLoading }) => {
   return (
     <motion.div
-      className="h-screen bg-black flex flex-col justify-center items-center fixed inset-0 z-50"
+      className="min-h-[100dvh] min-h-dvh bg-black flex flex-col justify-center items-center fixed inset-0 z-50"
       initial={{ opacity: 1, scale: 1 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 1.1 }} // Animasi keluar lebih smooth

@@ -66,7 +66,7 @@ const ContactPage = () => {
   return (
     <>
       <Navbar />
-      <div className="bg-black min-h-screen pt-24 font-space text-cream overflow-hidden">
+      <div className="bg-black min-h-[100dvh] min-h-dvh pt-24 font-space text-cream px-safe pb-safe">
         <motion.div
           className="max-w-6xl mx-auto px-6"
           variants={containerVariants}

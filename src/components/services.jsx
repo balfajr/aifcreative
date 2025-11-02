@@ -72,7 +72,7 @@ const Services = () => {
     };
 
     return (
-        <div className="min-h-screen bg-black px-4 py-4 font-space text-cream">
+        <div className="min-h-[100dvh] min-h-dvh bg-black px-4 py-4 font-space text-cream px-safe pb-safe">
             <motion.div 
                 className="max-w-7xl mx-auto flex md:flex-row flex-col items-center justify-between mb-16"
                 initial="hidden" 

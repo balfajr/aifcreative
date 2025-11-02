@@ -147,7 +147,7 @@ function Counter({ from = 0, to = 1000, duration = 1.6 }) {
   return (
     <div>
       <NavBar />
-      <div className="bg-black font-space min-h-screen py-16 overflow-hidden px-4 sm:px-6 lg:px-8">
+      <div className="bg-black font-space min-h-[100dvh] min-h-dvh py-16 px-4 sm:px-6 lg:px-8 px-safe pb-safe">
         <div className="max-w-5xl mx-auto">
           <motion.div 
              initial={{ opacity: 0, y: -20 }}

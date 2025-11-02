@@ -66,7 +66,7 @@ const works = () => {
   return (
     <>
       <Navbar />
-      <div className="bg-black min-h-screen pt-24">
+      <div className="bg-black min-h-[100dvh] min-h-dvh pt-24 px-safe pb-safe">
         <motion.div
           className="max-w-7xl mx-auto px-4"
           initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}

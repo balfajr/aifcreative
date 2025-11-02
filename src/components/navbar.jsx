@@ -68,7 +68,7 @@ const Navbar = () => {
 
       {/* --- Panel Menu Geser (tetap sama) --- */}
       <div
-        className={`fixed top-0 left-0 w-full h-screen bg-black text-cream/70 flex flex-col items-center justify-center transition-transform duration-300 ease-in-out z-40
+        className={`fixed top-0 left-0 w-full min-h-[100dvh] min-h-dvh bg-black text-cream/70 flex flex-col items-center justify-center transition-transform duration-300 ease-in-out z-40
           ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'}
         `}
       >

@@ -12,7 +12,7 @@ const Content = () => {
         transition={{ duration: 1.5, ease: "easeOut" }}
         viewport={{ once: true }}
       >
-        <span className="text-cream/70 font-extralight italic md:text-xl text-lg">We're</span>&nbsp;&nbsp;
+        <span className="text-cream/70 font-extralight italic md:text-sm text-lg">We're</span>&nbsp;&nbsp;
         <span>
           Not Here to Fit In.
           We’re Here to Break it, Make it, and Flux it —

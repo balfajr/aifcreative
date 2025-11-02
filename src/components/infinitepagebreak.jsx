@@ -20,7 +20,7 @@ const InfiniteCheckerboard = () => {
               {[...Array(200)].map((_, i) => (
                 <div 
                   key={`r1-${i}`} 
-                  className={`w-3 h-2 ${i % 2 === 0 ? 'bg-black' : 'bg-amber-50'}`}
+                  className={`w-2 h-2 ${i % 2 === 0 ? 'bg-black' : 'bg-amber-50'}`}
                 />
               ))}
             </div>
@@ -29,7 +29,7 @@ const InfiniteCheckerboard = () => {
               {[...Array(200)].map((_, i) => (
                 <div 
                   key={`r2-${i}`} 
-                  className={`w-3 h-2 ${i % 2 === 0 ? 'bg-amber-50' : 'bg-black'}`}
+                  className={`w-2 h-2 ${i % 2 === 0 ? 'bg-amber-50' : 'bg-black'}`}
                 />
               ))}
             </div>
