@@ -1,82 +1,56 @@
 import { useEffect } from "react";
-import { useAnimation, motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import PageBreak from "./infinitepagebreak";
 
-const Hero = () => {
-  const text = "AIF Creative is a playground for bold thinkers and boundary-benders. We don’t chase trends — we create motion. From concept to chaos, we craft experiences that move, shift, and stick.";
+const heroCopy =
+  "AIF Creative is a playground for bold thinkers and boundary-benders. We don’t chase trends — we create motion. From concept to chaos, we craft experiences that move, shift, and stick.";
 
-  const ctrls = useAnimation();
+const Hero = () => {
+  const controls = useAnimation();
   const { ref, inView } = useInView({
-    threshold: 1,
+    threshold: 0.4,
     triggerOnce: true,
   });
 
   useEffect(() => {
     if (inView) {
-      ctrls.start("visible");
-    } else {
-      ctrls.start("hidden");
+      controls.start("visible");
     }
-  }, [ctrls, inView]);
-
-  const wordAnimation = {
-    hidden: {},
-    visible: {},
-  };
-
-  const characterAnimation = {
-    hidden: { opacity: 0, y: `0.25em` },
-    visible: {
-      opacity: 1,
-      y: `0em`,
-      transition: { duration: 1, ease: [0.2, 0.65, 0.3, 0.9] },
-    },
-  };
+  }, [controls, inView]);
 
   return (
-    <div className="font-space h-screen overflow-hidden relative">
+    <section className="relative isolate overflow-hidden bg-black font-space">
       {/* Background Animated Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-bl from-black via-stone-950 to-black animate-gradient bg-[length:400%_400%]"></div>
+      <div className="absolute inset-0 bg-gradient-to-bl from-black via-stone-950 to-black animate-gradient bg-[length:400%_400%]" />
 
       {/* Overlay Patterns */}
       <div className="absolute inset-0 opacity-30">
-        <div className="absolute -top-100 left-0 w-96 h-96 bg-black rounded-full mix-blend-overlay filter blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-black rounded-full mix-blend-overlay filter blur-3xl animate-pulse"></div>
+        <div className="absolute -top-40 left-0 h-64 w-64 rounded-full bg-black blur-3xl mix-blend-overlay animate-pulse" />
+        <div className="absolute bottom-0 right-0 h-64 w-64 rounded-full bg-black blur-3xl mix-blend-overlay animate-pulse" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto p-10 h-full flex items-end">
-        <motion.div
-          className="text-2xl md:text-5xl tracking-tighter leading-tighter md:leading-tigher font-semibold text-cream max-w-5xl"
+      <div className="relative z-10 mx-auto flex min-h-dvh w-full max-w-7xl flex-col justify-end gap-10 px-6 pb-[clamp(3rem,6vw,6rem)] pt-[clamp(5rem,12vw,8rem)] md:px-10">
+        <motion.p
           ref={ref}
-          initial="hidden"
-          animate={ctrls}
-          variants={wordAnimation}
-          transition={{ delayChildren: 0.5, staggerChildren: 0.05 }}
+          initial={{ opacity: 0, y: 32 }}
+          animate={controls}
+          variants={{
+            visible: {
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
+            },
+          }}
+          className="hero-prose text-balance text-cream text-[clamp(1.625rem,4vw,3.5rem)] font-semibold leading-[1.15] tracking-normal"
         >
-          {text.split(" ").map((word, index) => (
-            <motion.span 
-              key={index} 
-              className="inline-block mr-3 mb-1" 
-              variants={wordAnimation}
-            >
-              {word.split("").map((char, i) => (
-                <motion.span 
-                  key={i} 
-                  className="inline-block" 
-                  variants={characterAnimation}
-                >
-                  {char}
-                </motion.span>
-              ))}
-            </motion.span>
-          ))}
-        </motion.div>
+          {heroCopy}
+        </motion.p>
       </div>
 
       <PageBreak />
-    </div>
+    </section>
   );
 };
 

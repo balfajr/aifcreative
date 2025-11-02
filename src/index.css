@@ -58,3 +58,27 @@ html, body {
 .animate-flux-text {
   animation: flux-text 4.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
+
+@layer components {
+  .hero-prose {
+    word-break: normal;
+    overflow-wrap: normal;
+    white-space: normal;
+  }
+}
+
+@layer utilities {
+  .min-h-dvh {
+    min-height: 100dvh;
+  }
+
+  @supports not (height: 100dvh) {
+    .min-h-dvh {
+      min-height: 100svh;
+    }
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
