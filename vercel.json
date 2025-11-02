@@ -24,12 +24,12 @@
     },
     {
       "source": "/testAED",
-      "destination": "https://docs.google.com/forms/d/1Dh-ZjC3XAwTMbVJkUejFONjXn298s9fvU5UMLI1-j4s/edit",
+      "destination": "https://docs.google.com/forms/d/e/1FAIpQLSfPDa__NukY1Yv5m_AgVaSv5Z-aWsaOMZYyywdCJq3uTa2IWQ/viewform?usp=dialog",
       "permanent": true
     },
     {
       "source": "/testAED/",
-      "destination": "https://docs.google.com/forms/d/1Dh-ZjC3XAwTMbVJkUejFONjXn298s9fvU5UMLI1-j4s/edit",
+      "destination": "https://docs.google.com/forms/d/e/1FAIpQLSfPDa__NukY1Yv5m_AgVaSv5Z-aWsaOMZYyywdCJq3uTa2IWQ/viewform?usp=dialog",
       "permanent": true
     }
   ],
