@@ -19,16 +19,6 @@ import ajLogo from '../assets/ajagijigfamilia/ajagijiglogo.webp';
 
 import { useLocation } from 'react-router-dom';
 
-
-
-
-
-
-
-
-
-
-
 const TeamPage = () => {
   const [selectedMember, setSelectedMember] = useState(null);
   const [isMdViewport, setIsMdViewport] = useState(() => {
@@ -58,13 +48,18 @@ const TeamPage = () => {
   }, []);
 
   const teamMembers = [
+    // Baris 1 - 3 orang
     { name: 'Heinz Monterie', position: 'Comissioner', image: heinzImage, instagram: 'https://instagram.com/heinzzem' },
     { name: 'Zulfi Fauzi', position: 'Chief Executive Officer', image: bejoImage, instagram: 'https://instagram.com/zow_zow' },
     { name: 'Andrie Aulia Akbar', position: 'Chief Finance Officer', image: andrieImage, instagram: 'https://instagram.com/andrieboi' },
+    
+    // Baris 2 - 4 orang
+    { name: 'Axcel Adam Purnomo', position: 'Account Director', image: axcelImage, instagram: 'https://instagram.com/aaxcel' },
     { name: 'Imam Luthfi', position: 'Creative Director', image: imamImage, instagram: 'https://instagram.com/mamskii' },
-    { name: 'Axcel Adam Purnomo', position: 'Head Account Manager', image: axcelImage, instagram: 'https://instagram.com/aaxcel' },
     { name: 'Radita Bahri', position: 'Creative Manager', image: raditaImage, instagram: 'https://instagram.com/raditabahri' },
     { name: 'Sendra Ahmad', position: 'Creative Designer', image: sendraImage, instagram: 'https://instagram.com/sendraahmad' },
+    
+    // Baris 3 - 3 orang
     { name: 'Andrianto', position: 'Production Director', image: andriantoImage, instagram: 'https://instagram.com/kingdobol' },
     { name: 'Yoga Boytama', position: 'Operation Manager', image: yogaImage, instagram: 'https://instagram.com/ygbytm' },
     { name: 'Rangga Tampubolon', position: 'Operation Supervisor', image: ranggaImage, instagram: 'https://instagram.com/ranggatampubolon' },
@@ -93,28 +88,25 @@ const TeamPage = () => {
     visible: { opacity: 1 },
   };
 
-
   // Counter
-function Counter({ from = 0, to = 1000, duration = 1.6 }) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { amount: 0.6, once: true });
-  const [val, setVal] = useState(from);
+  function Counter({ from = 0, to = 1000, duration = 1.6 }) {
+    const ref = useRef(null);
+    const inView = useInView(ref, { amount: 0.6, once: true });
+    const [val, setVal] = useState(from);
 
-  useEffect(() => {
-    if (!inView) return;
-    const start = performance.now();
-    const tick = (t) => {
-      const p = Math.min((t - start) / (duration * 1000), 1);
-      setVal(Math.floor(from + (to - from) * p));
-      if (p < 1) requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-  }, [inView]);
+    useEffect(() => {
+      if (!inView) return;
+      const start = performance.now();
+      const tick = (t) => {
+        const p = Math.min((t - start) / (duration * 1000), 1);
+        setVal(Math.floor(from + (to - from) * p));
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }, [inView]);
 
-  return <span ref={ref}>{val.toLocaleString()}+</span>;
-}
-
-
+    return <span ref={ref}>{val.toLocaleString()}+</span>;
+  }
 
   // Animation for the modal itself
   const modalVariants = {
@@ -143,12 +135,11 @@ function Counter({ from = 0, to = 1000, duration = 1.6 }) {
     }
   };
 
-
   return (
     <div>
       <NavBar />
       <div className="bg-black font-space min-h-[100dvh] min-h-dvh py-16 px-4 sm:px-6 lg:px-8 px-safe pb-safe">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <motion.div 
              initial={{ opacity: 0, y: -20 }}
              animate={{ opacity: 1, y: 0 }}
@@ -164,16 +155,17 @@ function Counter({ from = 0, to = 1000, duration = 1.6 }) {
             </p>
           </motion.div>
 
+          {/* Row 1: 3 cards */}
           <motion.div 
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+            className="flex flex-wrap justify-center gap-6 mb-6"
             variants={gridContainerVariants}
             initial="hidden"
             animate="show"
           >
-            {teamMembers.map((member, index) => (
+            {teamMembers.slice(0, 3).map((member, index) => (
               <motion.div
               key={member.name}
-              className="bg-white rounded-lg overflow-hidden shadow-sm cursor-pointer"
+              className="bg-white rounded-lg overflow-hidden shadow-sm cursor-pointer w-full sm:w-[calc(50%-12px)] lg:w-[280px]"
               onClick={() => setSelectedMember(member)}
               variants={cardVariants}
               whileHover={{
@@ -204,17 +196,114 @@ function Counter({ from = 0, to = 1000, duration = 1.6 }) {
                   <p className="text-sm text-gray-500">{member.position}</p>
                 </div>
                 <div className={`h-1 ${
-                  index % 4 === 0 ? 'bg-yellow-400' : 
-                  index % 4 === 1 ? 'bg-blue-400' : 
-                  index % 4 === 2 ? 'bg-green-400' : 
-                  'bg-purple-400'
+                  index % 3 === 0 ? 'bg-yellow-400' : 
+                  index % 3 === 1 ? 'bg-blue-400' : 
+                  'bg-green-400'
+                }`}></div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Row 2: 4 cards */}
+          <motion.div 
+            className="flex flex-wrap justify-center gap-6 mb-6"
+            variants={gridContainerVariants}
+            initial="hidden"
+            animate="show"
+          >
+            {teamMembers.slice(3, 7).map((member, index) => (
+              <motion.div
+              key={member.name}
+              className="bg-white rounded-lg overflow-hidden shadow-sm cursor-pointer w-full sm:w-[calc(50%-12px)] lg:w-[280px]"
+              onClick={() => setSelectedMember(member)}
+              variants={cardVariants}
+              whileHover={{
+                borderRadius: "16px",
+                scale: 1.05,
+                boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.15)",
+              }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+            
+                <div className="w-full overflow-hidden">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    loading="lazy"
+                    decoding="async"
+                    className="
+                      block w-full h-auto
+                      aspect-square object-contain
+                      sm:aspect-[4/5] sm:object-cover
+                      lg:aspect-[3/4]
+                      bg-black/5
+                    "
+                  />
+              </div>
+                <div className="p-4 border-t border-gray-200">
+                  <h3 className="font-medium text-gray-900">{member.name}</h3>
+                  <p className="text-sm text-gray-500">{member.position}</p>
+                </div>
+                <div className={`h-1 ${
+                  (index + 3) % 3 === 0 ? 'bg-yellow-400' : 
+                  (index + 3) % 3 === 1 ? 'bg-blue-400' : 
+                  'bg-green-400'
+                }`}></div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Row 3: 3 cards */}
+          <motion.div 
+            className="flex flex-wrap justify-center gap-6"
+            variants={gridContainerVariants}
+            initial="hidden"
+            animate="show"
+          >
+            {teamMembers.slice(7, 10).map((member, index) => (
+              <motion.div
+              key={member.name}
+              className="bg-white rounded-lg overflow-hidden shadow-sm cursor-pointer w-full sm:w-[calc(50%-12px)] lg:w-[280px]"
+              onClick={() => setSelectedMember(member)}
+              variants={cardVariants}
+              whileHover={{
+                borderRadius: "16px",
+                scale: 1.05,
+                boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.15)",
+              }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+            
+                <div className="w-full overflow-hidden">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    loading="lazy"
+                    decoding="async"
+                    className="
+                      block w-full h-auto
+                      aspect-square object-contain
+                      sm:aspect-[4/5] sm:object-cover
+                      lg:aspect-[3/4]
+                      bg-black/5
+                    "
+                  />
+              </div>
+                <div className="p-4 border-t border-gray-200">
+                  <h3 className="font-medium text-gray-900">{member.name}</h3>
+                  <p className="text-sm text-gray-500">{member.position}</p>
+                </div>
+                <div className={`h-1 ${
+                  (index + 7) % 3 === 0 ? 'bg-yellow-400' : 
+                  (index + 7) % 3 === 1 ? 'bg-blue-400' : 
+                  'bg-green-400'
                 }`}></div>
               </motion.div>
             ))}
           </motion.div>
         <div>
           <p className="mt-6 text-4xl text-left text-cream">
-  We’ve delivered <span className="font-semibold text-cream"><Counter to={99} /></span> projects.
+  We've delivered <span className="font-semibold text-cream"><Counter to={99} /></span> projects.
           </p>
           <p className='text-left mt-4 text-cream text-sm'>
             Across brands and industries—with outcomes that matter.
@@ -238,7 +327,7 @@ className="relative font-space overflow-hidden bg-black mx-auto  text-cream px-4
     The backbone of every successful event.
   </p>
   <p className="mt-1 text-cream/60 max-w-3xl">
-    With our trusted manpower partners, we’ve powered concerts, festivals, and corporate shows—
+    With our trusted manpower partners, we've powered concerts, festivals, and corporate shows—
     bringing energy, discipline, and seamless execution on ground.
   </p>
   <div className="m-20 h-[70px] sm:h-[380px] md:h-[420px]">
@@ -294,18 +383,13 @@ className="relative font-space overflow-hidden bg-black mx-auto  text-cream px-4
       <AiFillInstagram size={24} />
     </div>
 
-
     {/* subtle divider */}
     <span className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
   </a>
 </div>
 
-  
-
   </div>
 </section>
-
-
 
       <Footer />
 
